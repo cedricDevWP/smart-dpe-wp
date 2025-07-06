@@ -1,0 +1,17 @@
+{
+  "name": "cedricchevillard/smart-dpe",
+  "description": "Smart DPE - Générateur d'étiquettes DPE et GES",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Cédric Chevillard",
+      "homepage": "https://smart-dpe.immo/"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SmartDPE\\": "src/"
+    }
+  },
+  "require": {}
+}
