@@ -1,0 +1,34 @@
+# Ignore Composer vendor
+/vendor/
+composer.lock
+
+# Node modules (si jamais tu build un jour)
+node_modules/
+
+# IDE files
+*.sublime-project
+*.sublime-workspace
+.idea/
+.vscode/
+
+# Mac & system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# WordPress transient files (rare mais au cas où)
+*.sql
+*.sql.gz
+
+# Env files (si jamais)
+.env
+.env.local
+
+# Build artefacts (si tu pack un zip)
+*.zip
+
+# OS metadata
+ehthumbs.db
+Icon?

@@ -3,7 +3,8 @@
 
 **Smart DPE** est une extension WordPress qui permet de **générer et afficher facilement des étiquettes DPE et GES** sur votre site web.
 
-Elle se connecte à [https://smart-dpe.immo/](https://smart-dpe.immo/) :  
+Elle se connecte à [https://smart-dpe.immo/](https://smart-dpe.immo/) : 
+ 
 ✅ Les utilisateurs possédant un compte peuvent directement récupérer et afficher leurs étiquettes enregistrées.  
 ✅ Pour les utilisateurs sans compte, une étiquette sera générée avec un filigrane.  
 ✅ Un abonnement premium permet de supprimer le filigrane et d’accéder à toutes les fonctionnalités.
