@@ -70,7 +70,7 @@ class AdminPage {
     }
 
     public function handle_form() {
-        if (!isset($_POST['smart_dpe_nonce']) || !wp_verify_nonce($_POST['smart_dpe_nonce'], 'smart_dpe_save')) {
+        if (!isset($_POST['smart_dpe_nonce']) || !wp_verify_nonce( sanitize_text_field(wp_unslash($_POST['smart_dpe_nonce'])), 'smart_dpe_save')) {
             return;
         }
 
@@ -89,10 +89,18 @@ class AdminPage {
             return;
         }
 
-        $email = sanitize_email($_POST['smart_dpe_email']);
-        $password = sanitize_text_field($_POST['smart_dpe_password']);
+        $email = '';
+        $password = '';
 
-        // Do not save if user left placeholder
+        if (isset($_POST['smart_dpe_email'])) {
+            $email = sanitize_email(wp_unslash($_POST['smart_dpe_email']));
+        }
+
+        if (isset($_POST['smart_dpe_password'])) {
+            $password = sanitize_text_field(wp_unslash($_POST['smart_dpe_password']));
+        }
+
+        // Ne pas enregistrer si l’utilisateur laisse ***
         if ($email === '***') {
             $email = $this->option->decrypt($this->option->get('email'));
         }
@@ -101,6 +109,7 @@ class AdminPage {
             $password = $this->option->decrypt($this->option->get('password'));
         }
 
+        // Appel à l’API pour générer le token
         $this->api_service = new ApiService();
         $token = $this->api_service->request_token($email, $password);
 
@@ -109,12 +118,13 @@ class AdminPage {
             return;
         }
 
+        // Sauvegarde credentials & token chiffrés
         $this->option->update_all([
             'email'    => $this->option->encrypt($email),
             'password' => $this->option->encrypt($password),
             'token'    => $this->option->encrypt($token),
         ]);
 
-        add_settings_error('smart_dpe', 'settings_updated', __('Settings saved.', 'smart-dpe'), 'updated');
+        add_settings_error('smart_dpe', 'settings_updated', __('Settings saved!', 'smart-dpe'), 'updated');
     }
 }

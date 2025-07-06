@@ -20,12 +20,4 @@ class SmartDPE {
         new Shortcode();
         new PostMetaBox();
     }
-
-    public function load_textdomain() {
-        load_plugin_textdomain(
-            'smart-dpe',
-            false,
-            dirname(plugin_basename(__FILE__), 2) . '/languages'
-        );
-    }
 }

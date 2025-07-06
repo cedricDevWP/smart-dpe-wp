@@ -48,7 +48,7 @@ class Shortcode {
             $image_base64 = $this->api_service->generate_etiquette_base64($id, $dpe, $ges, $format);
 
             if (!is_wp_error($image_base64)) {
-                set_transient($key, $image_base64, MINUTE_IN_SECONDS); // 1 minute cache (changeable)
+                set_transient($key, $image_base64, DAY_IN_SECONDS * 7); // 7 jours
             }
         }
 
@@ -60,6 +60,11 @@ class Shortcode {
             }
         }
 
-        return '<img src="data:image/' . esc_attr($format) . ';base64,' . esc_attr($image_base64) . '" alt="Smart DPE Label">';
+        return sprintf(
+            '<img src="data:image/%1$s;base64,%2$s" alt="%3$s" class="smart-dpe-label" loading="lazy">',
+            esc_attr($format),
+            esc_attr($image_base64),
+            esc_attr__('Smart DPE label', 'smart-dpe')
+        );    
     }
 }

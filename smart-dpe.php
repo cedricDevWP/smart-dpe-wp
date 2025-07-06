@@ -6,6 +6,9 @@
  * Author URI: https://smart-dpe.immo/
  * Text Domain: smart-dpe
  * Domain Path: /languages
+ * Version: 1.0.0
+ * License: GPLv3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
 defined('ABSPATH') || exit;
