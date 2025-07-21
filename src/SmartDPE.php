@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 class SmartDPE {
 
     public function __construct() {
-        add_action('plugins_loaded', [$this, 'load_textdomain']);
+
     }
 
     public function run() {
